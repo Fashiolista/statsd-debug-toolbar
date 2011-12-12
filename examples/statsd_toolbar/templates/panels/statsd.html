@@ -1,0 +1,24 @@
+{% load i18n %}
+<h4>{% trans "Logged data" %}</h4>
+{% if data %}
+<table>
+    <thead>
+      <tr>
+        <th>Statistic</th>
+        <th>Value</th>
+        <th>Sample rate</th>
+      </tr>
+    </thead>
+    <tbody>
+{% for datum in data %}
+      <tr>
+        <td>{{ datum.statistic }}</td>
+        <td>{{ datum.value }}</td>
+        <td>{{ datum.sample_rate }}</td>
+      </tr>
+{% endfor %}
+    </tbody>
+</table>
+{% else %}
+	<p>{% trans 'No statsd data' %}</p>
+{% endif %}
