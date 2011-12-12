@@ -98,7 +98,8 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
+    #'debug_toolbar.middleware.DebugToolbarMiddleware',
+    'django_statsd.middleware.TimingMiddleware',
 )
 
 ROOT_URLCONF = 'examples.urls'
@@ -117,12 +118,13 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Uncomment the next line to enable the admin:
-    # 'django.contrib.admin',
+    'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
     'debug_toolbar',
     'main',
     'statsd_toolbar',
+    'django_statsd', 
 )
 
 # A sample logging configuration. The only tangible logging
@@ -153,4 +155,5 @@ INTERNAL_IPS = ('192.168.2.148', '127.0.0.1',)
 DEBUG_TOOLBAR_PANELS = (
     'statsd_toolbar.panels.StatsdDebugPanel',
     'debug_toolbar.panels.logger.LoggingPanel',
+    'debug_toolbar.panels.sql.SQLDebugPanel',
 )

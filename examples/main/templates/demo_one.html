@@ -1,3 +1,10 @@
 <body>
 Testing
+{{ user }}
+
+Dummy query to cause some SQL to get executed<br>
+
+{% for user in users %}
+  User: {{ user }}
+{% endfor %}
 </body>
