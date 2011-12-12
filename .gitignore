@@ -1,4 +1,9 @@
 bin
+build
 lib
 lib64
 include
+statsd
+*.pyc
+*.swp
+database.db

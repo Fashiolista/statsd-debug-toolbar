@@ -48,25 +48,6 @@ class StatsdDebugPanel(DebugPanel):
     def process_response(self, request, response):
         """ Processes a list of data that has been sent to statsd.
         """
-        print 'processing'
-        print self.data
-        print dir(self)
         self.record_stats({
             'data': self.data
         })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
