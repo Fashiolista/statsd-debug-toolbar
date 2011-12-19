@@ -4,7 +4,7 @@
 from setuptools import setup
 
 setup(name='django-statsd-toolbar',
-      version='0.1.1',
+      version='0.1.2',
       description='statsd debug panel for djang-debug-toolbar',
       author='Mike Ryan',
       author_email='mike@fadedink.co.uk',
