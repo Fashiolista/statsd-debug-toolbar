@@ -5,6 +5,7 @@
     <thead>
       <tr>
         <th>Statistic</th>
+        <th>Count</th>
         <th>Value</th>
         <th>Sample rate</th>
       </tr>
@@ -13,6 +14,7 @@
 {% for datum in data %}
       <tr>
         <td>{{ datum.statistic }}</td>
+        <td>{{ datum.count }}</td>
         <td>{{ datum.value }}</td>
         <td>{{ datum.sample_rate }}</td>
       </tr>

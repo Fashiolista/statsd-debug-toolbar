@@ -7,6 +7,12 @@ import statsd
 
 from debug_toolbar.utils.tracking import replace_call
 
+try:
+    from collections import Counter
+except ImportError:
+    # This is a backported Counter class for Python < 2.7
+    from debug_toolbar.utils import Counter
+
 
 def get_stats_info(func, panel):
     """ Intercepts data before it is sent to the statsd server, and stores it
@@ -55,6 +61,15 @@ class StatsdDebugPanel(DebugPanel):
     def process_response(self, request, response):
         """ Processes a list of data that has been sent to statsd.
         """
+        c = Counter([d['statistic'] for d in self.data])
+        # Clean the data a bit, so we get a count for each unique statistic
+        uniq_data = {}
+        for datum in self.data:
+            stat = datum['statistic']
+            uniq_data[stat] = {'value': datum['value'],
+                               'count': c[stat],
+                               'statistic': stat,
+                               'sample_rate': datum['sample_rate']}
         self.record_stats({
-            'data': self.data
+            'data': uniq_data.itervalues()
         })
